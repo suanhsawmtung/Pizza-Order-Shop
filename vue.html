@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="testing">
+        <input type="text" placeholder="Enter Name" v-model="info.name"><br>
+        <small style="color: red;" v-if="validator.nameStatus">Name is required to fill.</small><br>
+        <input type="number" placeholder="Enter Price" v-model="info.price"><br>
+        <small style="color: red;" v-if="validator.priceStatus">Price is required to fill.</small><br>
+        <button @Click="create()">Click</button><br><br>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in items">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price }} Ks</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: "#testing",
+        data: {
+            info: {
+                name: '',
+                price: ''
+            },
+            items: [],
+            validator: {
+                nameStatus: false,
+                priceStatus: false
+            }
+        },
+        methods: {
+            create() {
+                this.validationCheck();
+                if (this.info.name != '' && this.info.price != '') {
+                    this.items.push({
+                        id: this.items.length + 1,
+                        name: this.info.name,
+                        price: this.info.price
+                    });
+                    this.clear();
+                }
+            },
+            clear() {
+                this.info.name = '';
+                this.info.price = '';
+            },
+            validationCheck() {
+                this.validator.nameStatus = this.info.name == '' ? true : false;
+                this.validator.priceStatus = this.info.price == '' ? true : false;
+            }
+        }
+    })
+</script>
+
+</html>
