@@ -151,7 +151,7 @@
 
             $.ajax({
                 type:'get',
-                url: 'http://127.0.0.1:8000/account/changeAccountRole',
+                url: '/account/changeAccountRole',
                 data: $dataForChange,
                 dataType: 'json',
                 success: function(response){

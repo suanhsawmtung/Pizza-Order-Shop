@@ -203,12 +203,12 @@ $('#addOrderList').click(function(){
 
     $.ajax({
         type: 'get',
-        url: 'http://127.0.0.1:8000/ajax/orderList',
+        url: '/ajax/orderList',
         data: Object.assign({}, $orderData),
         dataType: 'json',
         success: function(response){
             if(response.status == true){
-                window.location.href = 'http://127.0.0.1:8000/customer/homePage'
+                window.location.href = '/customer/homePage'
             }
         }
     })
@@ -217,7 +217,7 @@ $('#addOrderList').click(function(){
 $('#removeCartLists').click(function(){
     $.ajax({
         type: 'get',
-        url: 'http://127.0.0.1:8000/ajax/removeCartLists',
+        url: '/ajax/removeCartLists',
         dataType: 'json',
     })
     $('#parentBody tr').remove();
@@ -239,7 +239,7 @@ $('.remove').click(function() {
 
     $.ajax({
         type: 'get',
-        url: 'http://127.0.0.1:8000/ajax/removeEachCart',
+        url: '/ajax/removeEachCart',
         data:{ 'cartId': $idForCart ,'productId':$idForProduct  },
         dataType: 'json',
     })

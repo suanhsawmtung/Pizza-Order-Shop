@@ -81,10 +81,10 @@
 @section('scriptSection')
 <script>
     $(document).ready(function(){
-        if(window.location.href === "http://127.0.0.1:8000/contact/contactListPage"){
+        if(window.location.href === "/contact/contactListPage"){
             $.ajax({
                 type: 'get',
-                url: 'http://127.0.0.1:8000/contact/updateContactStatusFromAdmin',
+                url: '/contact/updateContactStatusFromAdmin',
                 dataType: 'json'
             })
         }

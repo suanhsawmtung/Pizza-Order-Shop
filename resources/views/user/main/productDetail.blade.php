@@ -243,7 +243,7 @@
                 dataType : 'json',
                 success : function(response){
                     if(response.status == 'success'){
-                        window.location.href = 'http://127.0.0.1:8000/customer/homePage';
+                        window.location.href = '/customer/homePage';
                     }
                 }
             })
